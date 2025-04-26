@@ -5,10 +5,16 @@ public class Player_Heath : MonoBehaviour
 {
     public float MaxHealth = 100f;
      float health;
-    public Slider healthSlider;
+    public GameObject healthbar;
+     Slider healthSlider;
 
+    private void Awake()
+    {
+        healthSlider = healthbar.GetComponent<Slider>();
+    }
     void Start()
     {
+        
         health = MaxHealth;
 
         if (healthSlider != null)
