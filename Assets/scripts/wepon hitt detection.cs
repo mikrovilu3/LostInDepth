@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CollisionExample : MonoBehaviour
 {      Collision Collision;
     float force;
+    public GameObject particle;
     private void OnDrawGizmos()
     {
         
@@ -41,6 +43,8 @@ public class CollisionExample : MonoBehaviour
             if(otherObject.GetComponent<Dsamage_Handeler>() != null) { 
             otherObject.GetComponent<Dsamage_Handeler>().Take(force);}
             Debug.Log("dealt "+force);
+            Instantiate(particle, Collision.contacts[0].point, transform.rotation );
+
         }
     }
 

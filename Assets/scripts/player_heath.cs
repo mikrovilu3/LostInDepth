@@ -10,11 +10,11 @@ public class Player_Heath : MonoBehaviour
 
     private void Awake()
     {
-        healthSlider = healthbar.GetComponent<Slider>();
+        
     }
     void Start()
     {
-        
+        healthSlider = healthbar.GetComponent<Slider>();
         health = MaxHealth;
 
         if (healthSlider != null)
@@ -24,7 +24,7 @@ public class Player_Heath : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Health Slider is not assigned in the Inspector!");
+            Debug.LogError("Health Slider is not assigned in the Inspector!"+healthbar.GetComponent<Slider>()+"!!!");
         }
     }
 
