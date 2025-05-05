@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class MoveToClickPoint : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Camera Camera_debug;
