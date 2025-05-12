@@ -4,8 +4,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using static UnityEngine.ParticleSystem;
 
-public class MoveToClickPoint : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Camera Camera_debug;
@@ -26,6 +27,7 @@ public class MoveToClickPoint : MonoBehaviour
     float atimer=0;
     bool IsAtacking;
     public float atackTime = 1;
+    public GameObject atackParticle;
     void ReRandom()
     {
         randomOfSet = UnityEngine.Random.insideUnitSphere * searchRadius ;
@@ -120,6 +122,7 @@ public class MoveToClickPoint : MonoBehaviour
     }
     void EndAtack() {
         IsAtacking = false;
+        Instantiate(atackParticle, hit.point, Quaternion.LookRotation(targets[0].transform.position - transform.position));
     }
     void Atack()
     {

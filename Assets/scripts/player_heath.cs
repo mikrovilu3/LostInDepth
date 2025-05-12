@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Player_Heath : MonoBehaviour
 {
     public float MaxHealth = 100f;
-     float health;
+    public float health;
     public GameObject healthbar;
      Slider healthSlider;
 
@@ -14,17 +14,19 @@ public class Player_Heath : MonoBehaviour
     }
     void Start()
     {
-        healthSlider = healthbar.GetComponent<Slider>();
+        
         health = MaxHealth;
-
-        if (healthSlider != null)
+        
+        if (healthbar != null)
         {
+            healthSlider = healthbar.GetComponent<Slider>();
             healthSlider.maxValue = MaxHealth;
             healthSlider.value = health;
+           
         }
         else
         {
-            Debug.LogError("Health Slider is not assigned in the Inspector!"+healthbar.GetComponent<Slider>()+"!!!");
+            Debug.LogError("Health bar is not assigned in the Inspector!"+healthbar.GetComponent<Slider>()+"!!!"+healthbar.name+""+healthSlider.name);
         }
     }
 
@@ -36,7 +38,7 @@ public class Player_Heath : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Health slider is null");
+          //  Debug.LogError("Health slider is null");
         }
     }
 

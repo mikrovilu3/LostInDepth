@@ -7,10 +7,14 @@ public class EndingTimer : MonoBehaviour
     public float TimeToTriggerEnd = 180;
     public string Scene;
     public GameObject player;
-    
+    public bool spawnInBox = true;
+
     void Start()
     {
-        Invoke(nameof(TriggerEndig),TimeToTriggerEnd);
+        if (spawnInBox)
+        {
+            Invoke(nameof(TriggerEndig), TimeToTriggerEnd);
+        }
     }
 
     void TriggerEndig()
@@ -18,7 +22,16 @@ public class EndingTimer : MonoBehaviour
         SceneManager.LoadScene(Scene);
     }
     private void OnTriggerExit(Collider other)
-    {   if(other != null&&other.gameObject==player)
-        CancelInvoke();
+    {
+        if (other != null && other.gameObject == player)
+            CancelInvoke();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!spawnInBox)
+        {
+            Invoke(nameof(TriggerEndig), TimeToTriggerEnd);
+        }
+
     }
 }
