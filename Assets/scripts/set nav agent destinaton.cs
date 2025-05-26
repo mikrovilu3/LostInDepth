@@ -9,7 +9,7 @@ using static UnityEngine.ParticleSystem;
 public class EnemyBehavior : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public Camera Camera_debug;
+   
     [Tooltip("0 = player; 1 = low health hiding spot; 1 =< patrol points")]
     public GameObject [] targets;
     public float searchRadius = 1;
@@ -46,15 +46,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         atimer += Time.deltaTime;
         
-        if (Input.GetMouseButtonDown(0))
-        {
-             
-            if (Physics.Raycast(Camera_debug.ScreenPointToRay(Input.mousePosition), out hit, 100))
-            {
-                targets[0].transform.position = hit.point;
-            }
-            Debug.Log(hit.point);
-        }
+        
         if (targets[0] != null)
         {
             
