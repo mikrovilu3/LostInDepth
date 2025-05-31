@@ -36,11 +36,7 @@ public class CollisionExample : MonoBehaviour
         Debug.Log("Collided with: " + otherObject.name + " with "+otherCollider.name+ " colider and collision "+collision+" at "+force+"speed ");
         
         if (collision.gameObject.CompareTag("enemy")) {
-            Material material = otherObject.GetComponent<MeshRenderer>().material;
-            float r = material.color.r;
-            Color c = material.color;
-            c[0] = r + 0.1f*force;
-            material.color= c;
+           
             if(otherObject.GetComponent<Dsamage_Handeler>() != null) { 
             otherObject.GetComponent<Dsamage_Handeler>().Take(force* damageMultiplier);}
             Debug.Log("dealt "+force);
