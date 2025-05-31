@@ -7,6 +7,7 @@ public class CollisionExample : MonoBehaviour
 {      Collision Collision;
     float force;
     public GameObject particle;
+    public float damageMultiplier = 1f; 
     private void OnDrawGizmos()
     {
         
@@ -41,7 +42,7 @@ public class CollisionExample : MonoBehaviour
             c[0] = r + 0.1f*force;
             material.color= c;
             if(otherObject.GetComponent<Dsamage_Handeler>() != null) { 
-            otherObject.GetComponent<Dsamage_Handeler>().Take(force);}
+            otherObject.GetComponent<Dsamage_Handeler>().Take(force* damageMultiplier);}
             Debug.Log("dealt "+force);
             Instantiate(particle, Collision.contacts[0].point, Quaternion.LookRotation(-otherObject.transform.position + Collision.contacts[0].point) );
 
