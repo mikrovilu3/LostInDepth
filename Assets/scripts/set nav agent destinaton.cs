@@ -28,6 +28,8 @@ public class EnemyBehavior : MonoBehaviour
     bool IsAtacking;
     public float atackTime = 1;
     public GameObject atackParticle;
+    public GameObject dieParticle;
+    public GameObject sppiderr;
     void ReRandom()
     {
         randomOfSet = UnityEngine.Random.insideUnitSphere * searchRadius ;
@@ -98,13 +100,30 @@ public class EnemyBehavior : MonoBehaviour
             }
             else if (Health < LowHealthThreshold)
             {
-                Debug.Log("low health "+Health+" "+targets);
-                agent.destination = targets[1].transform.position + randomOfSet;
+                if (Health < 1f)
+                {
+                    agent.enabled = false;
+                    sppiderr.GetComponent<Animator>().enabled = false;
+                    for(int i = 0; i < 5; i++)
+                    {
+                        Instantiate(dieParticle, transform.position + UnityEngine.Random.insideUnitSphere, Quaternion.LookRotation(transform.position+ UnityEngine.Random.insideUnitSphere));
+                    }
+                    GetComponent<EnemyBehavior>().enabled = false;
+                }
+                else
+                {
+                    
+                    agent.destination = targets[1].transform.position + randomOfSet;
+                }
+
+                
             }
         }
     }
-    public void Take(float damage)
-    {
+    public void Take(float damage) { 
+
+
+        Debug.Log("tok damage");
         Health -= damage;
         if (health_slider != null)
         {
