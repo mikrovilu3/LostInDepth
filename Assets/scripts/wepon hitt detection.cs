@@ -38,7 +38,7 @@ public class CollisionExample : MonoBehaviour
         if (collision.gameObject.CompareTag("enemy")) {
            
             if(otherObject.GetComponent<Dsamage_Handeler>() != null) { 
-            otherObject.GetComponent<Dsamage_Handeler>().Take(force* damageMultiplier);}
+            otherObject.GetComponent<Dsamage_Handeler>().Take( damageMultiplier);}
             Debug.Log("dealt "+force);
             Instantiate(particle, Collision.contacts[0].point, Quaternion.LookRotation(-otherObject.transform.position + Collision.contacts[0].point) );
 
